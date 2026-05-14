@@ -1,0 +1,15 @@
+show=drun
+width=500
+height=400
+always_run=true
+show_generic=true
+location=center
+hide_scroll=true
+inset_search=true
+display_generic=true
+allow_images=true
+term=alacritty
+layer=top
+xoffset=695
+yoffset=300
+prompt=Arch :)

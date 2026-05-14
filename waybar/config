@@ -1,0 +1,133 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 40,
+    "margin-top": 10,
+    "margin-left": 10,
+    "margin-right": 10,
+    "spacing": 5,
+
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-right": ["group/media", "network", "group/hardware", "clock", "tray"],
+    
+    "hyprland/workspaces": {
+        "disable-scroll": false,
+        "all-outputs": true,
+        "on-scroll-up": "hyprctl dispatch workspace e+1",
+        "on-scroll-down": "hyprctl dispatch workspace e-1",
+        "format": "{name}",
+        "on-click": "activate"
+    },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 40,
+        "rewrite": {
+            "": "Hyprland ;)"
+        }
+    },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": " Muted",
+        "on-click": "pavucontrol",
+        "scroll-step": 5,
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%"
+    },
+
+    "group/hardware": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-active",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/system-icon",
+            "cpu",
+            "memory",
+            "temperature",
+	    "custom/localsend"
+        ]
+    },
+
+    "custom/system-icon": {
+        "format": " System",
+        "tooltip": false
+    },
+
+    "group/media": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 500,
+            "children-class": "not-active",
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "pulseaudio",
+            "custom/media-info",
+            "custom/media-prev",
+            "custom/media-next"
+        ]
+    },
+
+
+    "custom/media-info": {
+        "format": "{}",
+        "return-type": "json",
+        "max-length": 25,
+        "exec": "playerctl -a metadata --format '{\"text\": \"{{artist}} - {{title}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}' -F",
+        "on-click": "playerctl play-pause"
+    },
+
+    "custom/media-prev": {
+        "format": "󰒮",
+        "on-click": "playerctl previous"
+    },
+
+    "custom/media-next": {
+        "format": "󰒭",
+        "on-click": "playerctl next"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+
+    "memory": {
+        "format": " {percentage}%",
+        "tooltip": true
+    },
+
+    "temperature": {
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C ",
+        "format": "{temperatureC}°C "
+    },
+
+    "custom/localsend": {
+    	"format": " LocalSend",
+    	"on-click": "localsend",
+    	"tooltip": false
+    },
+
+    "network": {
+        "format-wifi": " {essid}",
+        "format-ethernet": "󰈀 eth",
+        "format-disconnected": "⚠ Disconnected",
+        "on-click": "nm-connection-editor"
+    },
+
+    "clock": {
+        "format": " {:%H:%M}",
+        "format-alt": " {:%d.%m.%Y}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "tray": {
+        "spacing": 10
+    }
+} 
