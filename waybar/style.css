@@ -91,6 +91,10 @@ window#waybar {
 #cpu,
 #memory,
 #temperature,
+#battery,
+#custom-media-prev,
+#custom-media-next,
+#custom-media-info,
 #custom-localsend {
     text-shadow: 0 0 7px #39ff14, 0 0 10px #ccff00;
     border: none;
@@ -99,9 +103,30 @@ window#waybar {
     transition: all 0.4s ease;
 }
 
+#battery.charging, #battery.plugged {
+    color: #50fa7b;
+}
+
+@keyframes blink {
+    to {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
 #custom-media-prev,
 #custom-media-next {
-    font-size: 20px;
+    font-size: 18px;
     padding: 0 10px;
     color: #52ff00;
 }
@@ -148,6 +173,7 @@ window#waybar {
 #group-hardware #cpu,
 #group-hardware #memory,
 #group-hardware #temperature,
+#group-hardware #battery
 #group-hardware #custom-localsend {
     background: transparent;
     border: none;
@@ -168,8 +194,12 @@ window#waybar {
 #cpu:hover,
 #memory:hover,
 #temperature:hover,
+#battery:hover,
 #network:hover,
 #pulseaudio:hover,
+#custom-media-prev:hover,
+#custom-media-next:hover,
+#custom-media-info:hover,
 #tray:hover,
 #clock:hover,
 #group-hardware:hover,

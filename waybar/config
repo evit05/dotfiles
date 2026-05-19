@@ -49,6 +49,7 @@
             "cpu",
             "memory",
             "temperature",
+	    "battery",
 	    "custom/localsend"
         ]
     },
@@ -94,12 +95,25 @@
 
     "cpu": {
         "format": " {usage}%",
-        "tooltip": false
+        "tooltip": true
     },
 
     "memory": {
         "format": " {percentage}%",
         "tooltip": true
+    },
+
+    "battery": {
+    	"bat": "BAT0",
+    	"states": {
+        	"warning": 30,
+        	"critical": 15
+	},
+    	"format": "{icon}{capacity}%",
+    	"format-charging": " {capacity}%",
+    	"format-plugged": " {capacity}%",
+    	"format-icons": [" ", " ", " ", " ", " "],
+    	"tooltip-format": "{timeTo}"
     },
 
     "temperature": {
