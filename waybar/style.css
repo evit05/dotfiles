@@ -103,7 +103,8 @@ window#waybar {
     transition: all 0.4s ease;
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
     color: #50fa7b;
 }
 
