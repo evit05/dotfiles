@@ -99,6 +99,7 @@ window#waybar {
     color: #aaffaa;
     font-style: italic;
     text-shadow: 0 0 10px #39ff14, 0 0 14px #ccff00;
+    margin: 10px 10px;
 }
 
 #clock { font-weight: bold; }
@@ -116,7 +117,7 @@ window#waybar {
 }
 
 #custom-power-trigger { font-size: 14px; }
-#custom-power { color: #ff5555; } /* Выключение — красное */
+#custom-power { color: #ff5555; }
 
 /* 7. Hover effects (shared for all) */
 #cpu:hover, #memory:hover, #temperature:hover, #battery:hover,
