@@ -1,3 +1,4 @@
+/* 1. Global settings */
 * {
     border: none;
     border-radius: 0;
@@ -11,37 +12,42 @@ window#waybar {
     color: #aaffaa;
     border: 2px solid rgba(82, 255, 0, 0.6);
     border-radius: 14px;
+    margin: 5px 10px;
 }
 
+/* 2. General styles for blocks (containers with background) */
 #workspaces,
-#window,
 #clock,
 #pulseaudio,
 #network,
 #tray,
-#group-hardware,
 #custom-system-icon,
-#group-media {
+#custom-power-trigger {
     background: rgba(30, 45, 30, 0.6);
     padding: 0 14px;
-    margin: 4px 4px;
+    margin: 4px 2px;
     border: 1px solid rgba(82, 255, 0, 0.3);
     color: #52ff00;
-    border-radius: 14px;
+    border-radius: 12px;
+    text-shadow: 0 0 7px #39ff14, 0 0 10px #ccff00;
     transition: all 0.3s ease;
 }
+
+/* 3. Workspaces */
+#workspaces { margin-left: 4px; }
 
 #workspaces button {
     padding: 0 5px;
     color: #2eb400;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     margin: 0 2px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 #workspaces button:hover {
     background: rgba(82, 255, 0, 0.2);
     color: #52ff00;
     text-shadow: 0 0 7px #39ff14, 0 0 10px #ccff00;
+    border-radius: 8px;
 }
 
 #workspaces button.active {
@@ -60,157 +66,71 @@ window#waybar {
     color: #ffffff;
 }
 
-#window {
-    background: transparent;
-    border: none;
-    color: #aaffaa;
-    font-style: italic;
-    text-shadow: 0 0 10px #39ff14, 0 0 14px #ccff00;
-}
-
-#clock {
-    font-weight: bold;
-}
-
-#pulseaudio {
-    color: #82ff55;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    padding: 0 15px;
-}
-
-#pulseaudio:active {
-    padding-top: 7px;
-    padding-bottom: 3px;
-    transition: none;
-}
-
-#network {
-    color: #2eb400;
-}
-
-#cpu,
-#memory,
-#temperature,
-#battery,
-#custom-media-prev,
-#custom-media-next,
-#custom-media-info,
-#custom-localsend {
+/* 4. Information and power modules */
+#cpu, #memory, #temperature, #battery, #network,
+#custom-media-prev, #custom-media-next, #custom-media-info, 
+#custom-localsend, #custom-power, #custom-suspend, 
+#custom-hibernate, #custom-reboot {
     text-shadow: 0 0 7px #39ff14, 0 0 10px #ccff00;
-    border: none;
     background: transparent;
     padding: 0 10px;
+    margin: 4px 2px;
+    border-radius: 12px;
     transition: all 0.4s ease;
 }
 
-#battery.charging,
-#battery.plugged {
-    color: #50fa7b;
-}
-
-@keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-#battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
-}
-
-#custom-media-prev,
-#custom-media-next {
-    font-size: 18px;
-    padding: 0 10px;
-    color: #52ff00;
-}
-
-#custom-media-prev:active,
-#custom-media-next:active {
-    color: #ffffff;
-    text-shadow: 0 0 15px #52ff00;
-}
-
-#temperature {
-    color: #aaffaa;
-}
-
-#temperature.critical {
-    color: #fe080a;
-    font-weight: bold;
-    text-shadow: 0 0 7px #fe5655, 0 0 10px #fe5655;
-}
-
-#tray {
-    margin-right: 8px;
-}
-
-#clock,
-#pulseaudio,
-#network,
-#tray,
-#custom-system-icon {
-    text-shadow: 0 0 7px #39ff14, 0 0 10px #ccff00;
-}
-
+/* 5. Groups */
 #group-media .not-active,
-#group-hardware .not-active {
+#group-hardware .not-active,
+#group-power .not-active {
     opacity: 0;
     transition: all 0.4s ease;
 }
 
 #group-media:hover .not-active,
-#group-hardware:hover .not-active {
+#group-hardware:hover .not-active,
+#group-power:hover .not-active {
     opacity: 1;
 }
 
-#group-hardware #cpu,
-#group-hardware #memory,
-#group-hardware #temperature,
-#group-hardware #battery
-#group-hardware #custom-localsend {
+/* 6. Specific module settings */
+#window {
     background: transparent;
-    border: none;
-    box-shadow: none;
+    color: #aaffaa;
+    font-style: italic;
+    text-shadow: 0 0 10px #39ff14, 0 0 14px #ccff00;
 }
 
-#custom-media-icon,
-#custom-media-info,
-#custom-media-prev,
-#custom-media-next {
-    color: #52ff00;
-    background: transparent;
-    border: none;
-    padding: 0 8px;
-    text-shadow: 0 0 7px #39ff14, 0 0 10px #ccff00;
+#clock { font-weight: bold; }
+
+#pulseaudio { color: #82ff55; }
+#pulseaudio:active { padding-top: 7px; padding-bottom: 3px; transition: none; }
+
+#temperature.critical { color: #fe080a; font-weight: bold; }
+
+#battery.charging, #battery.plugged { color: #50fa7b; }
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: #ffffff;
+    animation: blink 0.5s linear infinite alternate;
 }
 
-#cpu:hover,
-#memory:hover,
-#temperature:hover,
-#battery:hover,
-#network:hover,
-#pulseaudio:hover,
-#custom-media-prev:hover,
-#custom-media-next:hover,
-#custom-media-info:hover,
-#tray:hover,
-#clock:hover,
-#group-hardware:hover,
-#group-media:hover,
-#custom-localsend:hover,
-#custom-system-icon:hover {
-    padding-top: 3px;
-    padding-bottom: 7px;
+#custom-power-trigger { font-size: 14px; }
+#custom-power { color: #ff5555; } /* Выключение — красное */
+
+/* 7. Hover effects (shared for all) */
+#cpu:hover, #memory:hover, #temperature:hover, #battery:hover,
+#network:hover, #pulseaudio:hover, #tray:hover, #clock:hover,
+#custom-media-prev:hover, #custom-media-next:hover, #custom-media-info:hover,
+#custom-localsend:hover, #custom-system-icon:hover, #custom-power-trigger:hover,
+#custom-power:hover, #custom-reboot:hover, #custom-suspend:hover, #custom-hibernate:hover {
     color: #52ff00;
     background-color: rgba(82, 255, 0, 0.2);
     border: 1px solid #52ff00;
     box-shadow: 0 0 10px rgba(82, 255, 0, 0.4);
+}
+
+/* 8. Animations (don't work, but don't cause errors either) */
+@keyframes blink {
+    to { background-color: #ffffff; color: #000000; }
 }

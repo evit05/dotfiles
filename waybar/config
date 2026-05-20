@@ -5,9 +5,10 @@
     "margin-top": 10,
     "margin-left": 10,
     "margin-right": 10,
-    "spacing": 5,
+    "spacing": 0,
 
     "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["group/power"],
     "modules-right": ["group/media", "network", "group/hardware", "clock", "tray"],
     
     "hyprland/workspaces": {
@@ -26,6 +27,28 @@
             "": "Hyprland ;)"
         }
     },
+
+    "group/power": {
+    	"orientation": "horizontal",
+    	"drawer": {
+        	"transition-duration": 500,
+        	"children-class": "not-active",
+        	"transition-left-to-right": false
+    	},
+    	"modules": [
+        	"custom/power-trigger",
+        	"custom/power",
+		"custom/reboot",
+        	"custom/suspend",
+        	"custom/hibernate"
+    	]
+    },
+
+    "custom/power-trigger": { "format": "꧁꧂", "tooltip": false },
+    "custom/suspend": { "format": " 󰒲 ", "on-click": "systemctl suspend", "tooltip": false },
+    "custom/hibernate": { "format": "  ", "on-click": "systemctl hibernate", "tooltip": false },
+    "custom/reboot": { "format": "  ", "on-click": "reboot", "tooltip": false },
+    "custom/power": { "format": "  ", "on-click": "shutdown now", "tooltip": false },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
