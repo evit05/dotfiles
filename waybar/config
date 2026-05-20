@@ -45,7 +45,7 @@
     },
 
     "custom/power-trigger": { "format": "꧁꧂", "tooltip": false },
-    "custom/suspend": { "format": " 󰒲 ", "on-click": "systemctl suspend", "tooltip": false },
+    "custom/suspend": { "format": " 󰒲 ", "on-click": "hyprlock & sleep 0.5 && systemctl suspend", "tooltip": false },
     "custom/hibernate": { "format": "  ", "on-click": "systemctl hibernate", "tooltip": false },
     "custom/reboot": { "format": "  ", "on-click": "reboot", "tooltip": false },
     "custom/power": { "format": "  ", "on-click": "shutdown now", "tooltip": false },
