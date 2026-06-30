@@ -155,7 +155,7 @@
         "format-wifi": " {essid}",
         "format-ethernet": "󰈀 eth",
         "format-disconnected": "⚠ Disconnected",
-        "on-click": "nm-connection-editor"
+        "on-click": "kitty -e iwctl"
     },
 
     "clock": {
