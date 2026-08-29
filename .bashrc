@@ -6,7 +6,7 @@
 [[ $- != *i* ]] && return
 
 alias snvim='sudo -E nvim'
-alias hypsnvim='sudo -E nvim ~/.config/hypr/hyprland.conf'
+alias hypsnvim='sudo -E nvim ~/.config/hypr/hyprland.lua'
 alias archup='sudo pacman -Syu'
 alias snbash='sudo -E nvim ~/.bashrc' 
 
@@ -70,3 +70,10 @@ if [ -f ~/.config/quotes.txt ]; then
     echo "  $quote" #| nms -f green -a 
     echo ""
 fi
+
+
+eval "$(fnm env --use-on-cd)"
+
+
+# Load Angular CLI autocompletion.
+#source <(ng completion script)
