@@ -37,6 +37,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("wl-paste --type text --watch cliphist store")
     hl.exec_cmd("wl-paste --type image --watch cliphist store")
     hl.exec_cmd("killall -9 xdg-desktop-portal; /usr/lib/xdg-desktop-portal")
+    hl.exec_cmd("sudo dhclient enp2s0")
 end)
 
 -------------------------------
